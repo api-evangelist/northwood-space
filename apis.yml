@@ -1,7 +1,27 @@
 aid: northwood-space
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/northwood-space.png
 name: Northwood Space
-description: Northwood Space is a company surfaced as a portfolio company of a16z and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: Northwood Space is an El Segundo, California ground-infrastructure company for the space
+  industry, founded in 2022 by Bridgit Mendler (CEO), Griffin Cleverly (CTO), and Shaurya Luthra. It
+  designs and delivers rapidly deployable satellite ground stations built on electronically steerable
+  phased-array antennas that track many satellites at once with no moving parts, paired with software
+  ("Portal") that orchestrates every contact, automates scheduling, and moves data from spacecraft to
+  customer. Northwood aims to turn ground infrastructure into cloud-like, on-demand global capacity for
+  defense and commercial operators. The company's software stack is described as developer-oriented with
+  modern APIs and integration hooks, but it publishes no public developer portal, API documentation, or
+  SDKs at this time. Backed by Andreessen Horowitz (a16z), Founders Fund, Washington Harbour Partners,
+  and Alpine Space Ventures; raised a $100M Series B and won a $50M Space Force contract in early 2026.
 url: https://raw.githubusercontent.com/api-evangelist/northwood-space/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,12 +31,33 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
+- Space
+- Satellite
+- Ground Station
+- Aerospace
+- Defense
+- Infrastructure
+- Communications
 apis: []
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-20'
+  status: minimal
+  artifacts_added: 1
+  pass: local-v1
+common:
+- type: DomainSecurity
+  url: security/northwood-space-domain-security.yml
+- type: Website
+  url: https://www.northwoodspace.io/
+- type: Blog
+  url: https://www.northwoodspace.io/blog
+- type: PrivacyPolicy
+  url: https://www.northwoodspace.io/privacy-policy
