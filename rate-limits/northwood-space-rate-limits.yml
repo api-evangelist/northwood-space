@@ -1,0 +1,11 @@
+generated: '2026-09-17'
+method: searched
+source: https://docs.northwoodspace.io/core_api
+limit_count: 0
+limits: []
+headers: []
+note: >-
+  No published rate limits. The only API reference Northwood exposes ("Core API" on the Redocly-hosted
+  docs.northwoodspace.io) 302s to a Redocly corporate login (auth.cloud.redocly.com, login_type
+  REDOCLY,CORPORATE) before any limits page can be read, and the public website documents no limits.
+  An honest zero recorded from a gated reference, not evidence that the API is unlimited.

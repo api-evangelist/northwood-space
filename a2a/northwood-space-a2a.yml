@@ -1,0 +1,79 @@
+generated: '2026-09-17'
+method: probed
+source: https://docs.northwoodspace.io/.well-known/agent-card.json
+provider: Northwood
+providerId: northwood
+name: Northwood Developer Documentation A2A Agent Card
+description: >-
+  Northwood serves an A2A agent card from its developer documentation host docs.northwoodspace.io. The
+  card is the Redocly Realm platform's documentation agent card ("Developer Documentation", version
+  0.0.1, protocolVersion 0.3.0) rather than an agent Northwood authored: it declares no skills and, in
+  capabilities.extensions, points at the platform's MCP server at https://docs.northwoodspace.io/mcp,
+  which requires bearer/oauth2 authentication. The A2A endpoint it names (https://docs.northwoodspace.io/a2a)
+  answered 405 Method not allowed to an anonymous JSON-RPC POST.
+authorship: platform
+platform: Redocly Realm
+card:
+  file: a2a/northwood-agent-card.json
+discovery:
+  path: /.well-known/agent-card.json
+  canonical: true
+  host: docs.northwoodspace.io
+  also_probed:
+  - host: www.northwoodspace.io
+    path: /.well-known/agent-card.json
+    status: 404
+  - host: www.northwoodspace.io
+    path: /.well-known/agent.json
+    status: 404
+  - host: docs.northwoodspace.io
+    path: /.well-known/agent.json
+    status: 404
+x-evidence:
+  fetched: '2026-09-17'
+  url: https://docs.northwoodspace.io/.well-known/agent-card.json
+  http_status: 200
+  content_type: application/json
+agent:
+  name: Developer Documentation
+  url: https://docs.northwoodspace.io/a2a
+  documentationUrl: https://docs.northwoodspace.io/
+  version: 0.0.1
+  protocolVersion: 0.3.0
+  preferredTransport: HTTP+JSON
+  skills: []
+  extensions:
+  - uri: https://modelcontextprotocol.io
+    url: https://docs.northwoodspace.io/mcp
+    authentication:
+      required: true
+      schemes:
+      - bearer
+      - oauth2
+grade:
+  against: A2A 1.0.0
+  result: conformant
+  checks:
+  - check: capabilities is an object
+    pass: true
+  - check: protocolVersion present
+    pass: true
+    value: 0.3.0
+  - check: skills is an array
+    pass: true
+    count: 0
+  - check: preferredTransport present (optional)
+    pass: true
+    value: HTTP+JSON
+  - check: defaultInputModes present (optional)
+    pass: true
+    value:
+    - text/plain
+  - check: defaultOutputModes present (optional)
+    pass: true
+    value:
+    - text/plain
+  deviations: []
+  notes:
+  - skills[] is empty — the card advertises an MCP extension, not any A2A skill
+  - the A2A url returned HTTP 405 to an anonymous JSON-RPC POST (endpoint exists, method not accepted)

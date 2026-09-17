@@ -1,0 +1,67 @@
+generated: '2026-09-17'
+method: probed
+source: anonymous GET of RFC 8615 well-known paths on every host the record knows (northwoodspace.io, www.northwoodspace.io, docs.northwoodspace.io, auth.cloud.redocly.com named in authorization_servers)
+note: >-
+  Two real documents, both served by the Redocly-hosted developer docs site docs.northwoodspace.io (CNAME
+  ssl.redocly.app): the OAuth authorization-server metadata (issuer auth.cloud.redocly.com, PKCE S256,
+  authorization_code + refresh_token, dynamic client registration) and the protected-resource metadata for
+  the /mcp endpoint. The agent card at /.well-known/agent-card.json is recorded under a2a/. The apex
+  northwoodspace.io 308s every path to www, and www.northwoodspace.io (Next.js) returns a 404 HTML page for
+  every well-known path including security.txt. auth.cloud.redocly.com is Redocly's shared auth host, not
+  a Northwood host, so it is recorded for completeness but claims nothing for the provider.
+hosts:
+- host: docs.northwoodspace.io
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json
+    file: well-known/northwood-oauth-authorization-server.json
+  - path: /.well-known/oauth-protected-resource/mcp
+    status: 200
+    content_type: application/json
+    file: well-known/northwood-oauth-protected-resource-mcp.json
+    note: RFC 9728 resource metadata named by the WWW-Authenticate challenge on POST /mcp
+  - path: /.well-known/agent-card.json
+    status: 200
+    content_type: application/json
+    file: a2a/northwood-agent-card.json
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: www.northwoodspace.io
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: northwoodspace.io
+  documents:
+  - path: /.well-known/security.txt
+    status: 308
+    note: apex redirects every path to https://www.northwoodspace.io/ (same 404 result there)
+- host: auth.cloud.redocly.com
+  documents:
+  - path: /.well-known/jwks.json
+    status: 200
+    note: Redocly's shared JWKS named by jwks_uri; third-party host, not saved and not credited to Northwood

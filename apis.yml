@@ -64,6 +64,26 @@ x-enrichment:
   artifacts_added: 1
   pass: local-v1
 common:
+- type: Documentation
+  url: https://docs.northwoodspace.io/
+- type: Careers
+  url: https://www.northwoodspace.io/careers
+- type: GitHubOrganization
+  url: https://github.com/Northwood-Space
+- type: SecondaryMarket
+  url: https://www.hiive.com/securities/northwood-stock
+- type: WellKnown
+  url: well-known/northwood-space-well-known.yml
+- type: AgentCard
+  url: a2a/northwood-space-a2a.yml
+- type: MCPServer
+  url: mcp/northwood-space-mcp.yml
+- type: LLMsTxt
+  url: llms/northwood-space-llms.txt
+- type: Plans
+  url: plans/northwood-space-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/northwood-space-rate-limits.yml
 - type: DomainSecurity
   url: security/northwood-space-domain-security.yml
 - type: Website

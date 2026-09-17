@@ -1,0 +1,61 @@
+generated: '2026-09-17'
+method: probed
+status: published
+source: https://docs.northwoodspace.io/mcp
+authorship: platform
+platform: Redocly Realm
+notes: >-
+  Northwood's Redocly-hosted developer documentation site exposes a hosted Model Context Protocol server
+  at https://docs.northwoodspace.io/mcp, advertised by the site's A2A agent card (capabilities.extensions)
+  and by the OAuth protected-resource metadata at /.well-known/oauth-protected-resource/mcp. An anonymous
+  JSON-RPC tools/list POST returned HTTP 401 {"error":"unauthorized","message":"Authentication required"}
+  with WWW-Authenticate: Bearer resource_metadata="https://docs.northwoodspace.io/.well-known/oauth-protected-resource/mcp"
+  (RFC 9728), so the live tool schema is auth-gated and is NOT recorded here. Sibling Redocly-hosted
+  servers in the catalog (verato, spotnana, cpanel) enumerate the platform's documentation tools
+  (list-apis, get-endpoints, get-endpoint-info, get-security-schemes, get-full-api-description, search);
+  Northwood's tool list is not asserted because it was not observed. The underlying "Core API" reference
+  the server would read is itself behind a Redocly corporate login.
+server:
+  name: northwood-docs
+  transport: streamable-http
+  url: https://docs.northwoodspace.io/mcp
+  auth:
+    required: true
+    schemes:
+    - bearer
+    - oauth2
+    protected_resource_metadata: https://docs.northwoodspace.io/.well-known/oauth-protected-resource/mcp
+    discovery: https://docs.northwoodspace.io/.well-known/oauth-authorization-server
+    issuer: https://auth.cloud.redocly.com
+    authorization_endpoint: https://docs.northwoodspace.io/_mcp/oauth2/auth
+    token_endpoint: https://docs.northwoodspace.io/_mcp/oauth2/token-portal
+    registration_endpoint: https://docs.northwoodspace.io/_mcp/register
+    grant_types:
+    - authorization_code
+    - refresh_token
+    code_challenge_methods:
+    - S256
+    scopes_supported:
+    - openid
+    - profile
+    - email
+    - offline_access
+tools: []
+tools_note: gated — tools/list requires an OAuth bearer token; needs authenticated introspection
+deployment:
+  mode: remote
+  endpoint: https://docs.northwoodspace.io/mcp
+  auth: oauth
+  verified: probed
+  probe: gated
+  tools: null
+  checked: '2026-09-17'
+x-evidence:
+- url: https://docs.northwoodspace.io/mcp
+  method: POST tools/list
+  http_status: 401
+  www_authenticate: Bearer resource_metadata="https://docs.northwoodspace.io/.well-known/oauth-protected-resource/mcp"
+- url: https://docs.northwoodspace.io/.well-known/oauth-protected-resource/mcp
+  http_status: 200
+- url: https://docs.northwoodspace.io/.well-known/agent-card.json
+  http_status: 200

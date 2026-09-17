@@ -1,0 +1,30 @@
+# Northwood
+
+> Northwood (Northwood Space) builds satellite ground infrastructure: the Portal multi-beam phased-array antenna, the Prism high-data-rate parabolic antenna, the software that orchestrates every spacecraft contact, and a shared global ground network for commercial and government operators. El Segundo, California; founded 2022.
+
+<!-- generated: 2026-09-17 | method: generated | source: apis.yml + probed artifacts in this repo. Northwood publishes no llms.txt of its own (www.northwoodspace.io/llms.txt and docs.northwoodspace.io/llms.txt both 404). -->
+
+## Public surface
+
+- [Website](https://www.northwoodspace.io/): company, technology, careers, press.
+- [Technology](https://www.northwoodspace.io/technology): Portal and Prism antennas and the network.
+- [Blog](https://www.northwoodspace.io/blog)
+- [Developer documentation](https://docs.northwoodspace.io/): Redocly-hosted; the "Core API" reference at /core_api requires a corporate login and is not publicly readable.
+
+## Agent surfaces
+
+- [A2A agent card](https://docs.northwoodspace.io/.well-known/agent-card.json): platform-served (Redocly Realm) documentation card, protocolVersion 0.3.0, no skills.
+- MCP server: https://docs.northwoodspace.io/mcp — streamable HTTP, requires OAuth (bearer). Anonymous tools/list returns 401.
+- [OAuth authorization server metadata](https://docs.northwoodspace.io/.well-known/oauth-authorization-server)
+- [OAuth protected resource metadata for /mcp](https://docs.northwoodspace.io/.well-known/oauth-protected-resource/mcp)
+
+## Not published
+
+- No OpenAPI, AsyncAPI, GraphQL SDL, Protobuf or WSDL reachable without credentials.
+- No SDKs or packages on npm, PyPI, or other registries.
+- No pricing, rate limits, status page, changelog, or security.txt.
+- GitHub organization https://github.com/Northwood-Space holds only Intel SoC-FPGA firmware forks.
+
+## Contact
+
+- contact@northwoodspace.io
