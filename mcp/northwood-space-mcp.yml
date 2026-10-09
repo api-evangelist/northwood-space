@@ -59,3 +59,22 @@ x-evidence:
   http_status: 200
 - url: https://docs.northwoodspace.io/.well-known/agent-card.json
   http_status: 200
+rfc9728:
+  endpoint: https://docs.northwoodspace.io/mcp
+  metadata_url: https://docs.northwoodspace.io/.well-known/oauth-protected-resource/mcp
+  discovered_via: WWW-Authenticate resource_metadata on an anonymous POST initialize
+  fetched: '2026-09-25'
+  http_status: 200
+  content_type: application/json
+  document:
+    resource: https://docs.northwoodspace.io/mcp
+    authorization_servers:
+    - https://docs.northwoodspace.io
+    scopes_supported:
+    - openid
+    - profile
+    - email
+    - offline_access
+    bearer_methods_supported:
+    - header
+    resource_documentation: https://docs.northwoodspace.io/.well-known/oauth-authorization-server
